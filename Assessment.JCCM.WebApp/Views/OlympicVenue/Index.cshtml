@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Assessment.JCCM.DataTypes.OlympicVenueDto>
+
+<div class="card mt-5">
+    <div class="card-body">
+
+        @Html.ActionLink("Create New", "Create")
+        <hr />
+        <table class="table table-dark table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ComplexesNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Budget)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CountryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityName)
+                </th>
+                <th></th>
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ComplexesNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CountryName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CityName)
+                        </td>
+                        <td>
+                            <!-- Example single danger button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Edit","OlympicVenue",new {id = item.Id})" class="dropdown-item">Editar</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a href="@Url.Action("Delete","OlympicVenue",new {id = item.Id})" class="dropdown-item deleteItem">Edliminar</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+
+            </table>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/olympicVenue.js"></script>
+    
+    
+}
